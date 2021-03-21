@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: #EED3D3 ;">
+    <div id="all" >
+        <div style="text-align: center; padding: 20px; font-size: 40px;margin-right: 342px;;">GitHub Repositories</div>
+        <table class="whole-table">
+            <thead>
+
+                <th>Name</th>
+                <th>Description</th>
+                <th>URL</th>
+                <th>Language</th>
+
+                </tr>
+            </thead>
+            <tbody id="data">
+
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+<script>
+    fetch('https://api.github.com/users/Raheena09/repos').then(
+        res => {
+            res.json().then(
+                data => {
+                    console.log(data);
+                    var temp = '';
+
+                    data.forEach(element => {
+
+
+                        temp += `<tr>
+                         <td>  ${element.name} </td>
+                            <td>${element.description} </td> 
+                         <td><a href="${element.html_url}" target="_blank"> ${element.html_url}</a></td>
+                          <td> ${element.language} </td> 
+                          </tr>`;
+
+                    });
+                    document.getElementById("data").innerHTML = temp;
+
+                }
+
+            )
+
+
+        }
+    )
+</script>
+
+</html>

@@ -1,0 +1,11 @@
+td,th{
+    border: 1px solid #000;
+   
+
+}
+th{
+    background-color: #171414 ;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
