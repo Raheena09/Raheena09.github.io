@@ -19,6 +19,8 @@
                 <th>Description</th>
                 <th>URL</th>
                 <th>Language</th>
+                <th>Demo-link</th>
+
 
                 </tr>
             </thead>
@@ -31,14 +33,21 @@
 
 </body>
 <script>
+    window.onload=function () {
+        fetchApi();
+};
+let linkArray=['https://raheena09.github.io/basic-todolist/','https://raheena09.github.io/Card-task/','ksbjckjsd','jhbdjhc','https://raheena09.github.io/photography-website/','sdkjns'];
+
+
+function fetchApi(){
     fetch('https://api.github.com/users/Raheena09/repos').then(
         res => {
             res.json().then(
                 data => {
-                    console.log(data);
+                    // console.log(data);
                     var temp = '';
 
-                    data.forEach(element => {
+                    data.forEach((element, index )=> {
 
 
                         temp += `<tr>
@@ -46,10 +55,12 @@
                             <td>${element.description} </td> 
                          <td><a href="${element.html_url}" target="_blank"> ${element.html_url}</a></td>
                           <td> ${element.language} </td> 
+                          <td> <a href="${linkArray[index]}" target="_blank">${linkArray[index]}</a></td>
                           </tr>`;
 
                     });
                     document.getElementById("data").innerHTML = temp;
+                    console.log(temp);
 
                 }
 
@@ -58,6 +69,7 @@
 
         }
     )
+}
 </script>
 
 </html>
