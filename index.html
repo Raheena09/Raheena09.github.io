@@ -10,7 +10,7 @@
 </head>
 
 <body style="background-color: #EED3D3 ;">
-    <div id="all" >
+    <div id="all">
         <div style="text-align: center; padding: 20px; font-size: 40px;margin-right: 342px;;">GitHub Repositories</div>
         <table class="whole-table">
             <thead>
@@ -33,24 +33,29 @@
 
 </body>
 <script>
-    window.onload=function () {
+    window.onload = function () {
         fetchApi();
-};
-let linkArray=['https://raheena09.github.io/basic-todolist/','https://raheena09.github.io/Card-task/','https://raheena09.github.io/css-project/','https://raheena09.github.io/div-move/','https://raheena09.github.io/image-slider-js/','https://raheena09.github.io/photography-website/','https://raheena09.github.io/'];
+    };
+    let linkArray = ['https://raheena09.github.io/basic-todolist/', 
+    'https://raheena09.github.io/Card-task/', 
+    'https://raheena09.github.io/css-project/', 
+    'https://raheena09.github.io/div-move/', 
+    'https://raheena09.github.io/div-move-rectangle/',
+    'https://raheena09.github.io/image-slider-js/', 'https://raheena09.github.io/photography-website/', 'https://raheena09.github.io/'];
 
 
-function fetchApi(){
-    fetch('https://api.github.com/users/Raheena09/repos').then(
-        res => {
-            res.json().then(
-                data => {
-                    // console.log(data);
-                    var temp = '';
+    function fetchApi() {
+        fetch('https://api.github.com/users/Raheena09/repos').then(
+            res => {
+                res.json().then(
+                    data => {
+                        // console.log(data);
+                        var temp = '';
 
-                    data.forEach((element, index )=> {
+                        data.forEach((element, index) => {
 
 
-                        temp += `<tr>
+                            temp += `<tr>
                          <td>  ${element.name} </td>
                             <td>${element.description} </td> 
                          <td><a href="${element.html_url}" target="_blank"> ${element.html_url}</a></td>
@@ -58,18 +63,18 @@ function fetchApi(){
                           <td> <a href="${linkArray[index]}" target="_blank">${linkArray[index]}</a></td>
                           </tr>`;
 
-                    });
-                    document.getElementById("data").innerHTML = temp;
-                    console.log(temp);
+                        });
+                        document.getElementById("data").innerHTML = temp;
+                        console.log(temp);
 
-                }
+                    }
 
-            )
+                )
 
 
-        }
-    )
-}
+            }
+        )
+    }
 </script>
 
 </html>
